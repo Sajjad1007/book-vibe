@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { useLoaderData } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { useLoaderData } from "react-router";
 import { IoIosArrowDown } from "react-icons/io";
-import ListedBookCard from "./ListedBookCard";
+import ListedBookCard from "../components/ListedBookCard";
 import { getReadlistBooks, getWishlistBooks } from "../utilities/localStorage";
 
 const ListedBooks = () => {

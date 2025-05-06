@@ -43,13 +43,18 @@ const Navbar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink className="text-base font-normal text-[#131313] rounded-lg">
+              <NavLink
+                to="/"
+                end
+                className="text-base font-normal text-[#131313] rounded-lg"
+              >
                 Home
               </NavLink>
             </li>
             <li>
               <NavLink
-                to={"/lists"}
+                to="/lists"
+                end
                 className="text-base font-normal text-[#131313] rounded-lg"
               >
                 Listed Books
@@ -57,7 +62,8 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to={"/pages"}
+                to="/pages"
+                end
                 className="text-base font-normal text-[#131313] rounded-lg"
               >
                 Pages To Read
@@ -78,28 +84,51 @@ const Navbar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="font-work flex lg:gap-2 xl:gap-4 px-2">
           <li>
-            <NavLink className="btn btn-ghost rounded-lg text-base font-normal text-[#131313]">
+            <NavLink
+              to="/"
+              end
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "border-green text-green"
+                    : "border-white text-[#131313]"
+                } btn border shadow-none bg-white rounded-lg text-base font-normal`
+              }
+            >
               Home
             </NavLink>
           </li>
           <li>
             <NavLink
-              to={"/lists"}
-              className="btn btn-ghost rounded-lg text-base font-normal text-[#131313]"
+              to="/lists"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "border-green text-green"
+                    : "border-white text-[#131313]"
+                } btn border shadow-none bg-white rounded-lg text-base font-normal`
+              }
             >
               Listed Books
             </NavLink>
           </li>
           <li>
             <NavLink
-              to={"/pages"}
-              className="btn btn-ghost rounded-lg text-base font-normal text-[#131313]"
+              to="/pages"
+              className={({ isActive }) =>
+                `${
+                  isActive
+                    ? "border-green text-green"
+                    : "border-white text-[#131313]"
+                } btn border shadow-none bg-white rounded-lg text-base font-normal`
+              }
             >
               Pages To Read
             </NavLink>
           </li>
         </ul>
       </div>
+
       <div className="navbar-end gap-2">
         <a className="btn bg-green rounded-lg text-white font-work font-semibold hover:opacity-80 w-22">
           Sign In

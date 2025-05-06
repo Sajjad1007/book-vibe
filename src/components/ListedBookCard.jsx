@@ -16,7 +16,12 @@ const ListedBookCard = ({ book }) => {
 
   return (
     <div className="border-[#13131320] border rounded-xl p-4 flex flex-col sm:flex-row gap-8 my-6">
-      <img src={image} alt={author} className="w-42 h-52 rounded-xl mx-auto" />
+      <img
+        src={image}
+        alt={author}
+        loading="lazy"
+        className="w-42 h-52 rounded-xl mx-auto"
+      />
       <div className="flex-1">
         <h2 className="font-display text-[#131313] font-bold text-2xl">
           {bookName}

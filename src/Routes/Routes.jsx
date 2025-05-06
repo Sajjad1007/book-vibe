@@ -1,11 +1,11 @@
 import React from "react";
 import { createBrowserRouter } from "react-router";
-import Root from "../components/Root";
-import ErrorPage from "./../components/ErrorPage";
-import Home from "./../components/Home";
-import BookDetails from "./../components/BookDetails";
-import ListedBooks from "../components/ListedBooks";
-import PagesToRead from "../components/PagesToRead";
+import Root from "../pages/Root";
+import Home from "../pages/Home";
+import ErrorPage from "../pages/ErrorPage";
+import ListedBooks from "../pages/ListedBooks";
+import PagesToRead from "../pages/PagesToRead";
+import BookDetails from "../pages/BookDetails";
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +15,6 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        path: "/",
         loader: () => fetch("booksData.json"),
         Component: Home,
       },
@@ -25,12 +24,12 @@ export const router = createBrowserRouter([
         Component: BookDetails,
       },
       {
-        path: "/lists",
+        path: "lists",
         loader: () => fetch("booksData.json"),
         Component: ListedBooks,
       },
       {
-        path: "/pages",
+        path: "pages",
         Component: PagesToRead,
       },
     ],
