@@ -33,17 +33,6 @@ const Navbar = () => {
           >
             <li>
               <NavLink
-                onClick={() => {
-                  window.location.href = "./";
-                  localStorage.clear();
-                }}
-                className="text-base font-normal text-[#131313] rounded-lg"
-              >
-                Book Vibe
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/"
                 end
                 className="text-base font-normal text-[#131313] rounded-lg"
@@ -53,7 +42,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/lists"
+                to="lists"
                 end
                 className="text-base font-normal text-[#131313] rounded-lg"
               >
@@ -62,7 +51,7 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/pages"
+                to="pages"
                 end
                 className="text-base font-normal text-[#131313] rounded-lg"
               >
@@ -74,8 +63,7 @@ const Navbar = () => {
         <a
           className="hidden sm:block sm:ml-2 lg:ml-0 text-3xl font-work font-bold cursor-pointer"
           onClick={() => {
-            window.location.href = "./";
-            localStorage.clear();
+            window.location.href = "../";
           }}
         >
           Book Vibe
@@ -100,7 +88,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/lists"
+              to="lists"
               className={({ isActive }) =>
                 `${
                   isActive
@@ -114,7 +102,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/pages"
+              to="pages"
               className={({ isActive }) =>
                 `${
                   isActive

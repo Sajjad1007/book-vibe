@@ -1,51 +1,36 @@
 import React, { useState } from "react";
-import { useLoaderData } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { IoIosArrowDown } from "react-icons/io";
 import ListedBookCard from "../components/ListedBookCard";
-import { getReadlistBooks, getWishlistBooks } from "../utilities/localStorage";
+import {
+  getReadlist,
+  getWishlist,
+  removeFromReadlist,
+  removeFromWishlist,
+} from "../utilities/localStorage";
 
 const ListedBooks = () => {
-  const books = useLoaderData();
-  const readlistBooksId = getReadlistBooks();
-  const wishlistBooksId = getWishlistBooks();
-  const readlistBooks = [];
-  const wishlistBooks = [];
-
-  for (const id of readlistBooksId) {
-    readlistBooks.push(books.find((book) => book.bookId === Number(id)));
-  }
-
-  for (const id of wishlistBooksId) {
-    wishlistBooks.push(books.find((book) => book.bookId === Number(id)));
-  }
-
-  const [readlistBooksState, setReadlistBooksState] = useState(readlistBooks);
-  const [wishlistBooksState, setWishlistBooksState] = useState(wishlistBooks);
+  const [readlist, setReadlist] = useState(getReadlist());
+  const [wishlist, setWishlist] = useState(getWishlist());
 
   const handleSort = (sortedBy) => {
-    switch (sortedBy) {
-      case "ratings":
-        {
-          setReadlistBooksState(
-            [...readlistBooksState].sort((a, b) => b.rating - a.rating)
-          );
-          setWishlistBooksState(
-            [...wishlistBooksState].sort((a, b) => b.rating - a.rating)
-          );
-        }
-        break;
-      case "pages":
-        {
-          setReadlistBooksState(
-            [...readlistBooksState].sort((a, b) => b.totalPages - a.totalPages)
-          );
-          setWishlistBooksState(
-            [...wishlistBooksState].sort((a, b) => b.totalPages - a.totalPages)
-          );
-        }
-        break;
+    if (sortedBy === "ratings") {
+      setReadlist([...readlist].sort((a, b) => b.rating - a.rating));
+      setWishlist([...wishlist].sort((a, b) => b.rating - a.rating));
+    } else {
+      setReadlist([...readlist].sort((a, b) => b.totalPages - a.totalPages));
+      setWishlist([...wishlist].sort((a, b) => b.totalPages - a.totalPages));
+    }
+  };
+
+  const handleRemoveFromList = (book, list) => {
+    if (list === "readlist") {
+      removeFromReadlist(book);
+      setReadlist(getReadlist());
+    } else {
+      removeFromWishlist(book);
+      setWishlist(getWishlist());
     }
   };
 
@@ -93,9 +78,14 @@ const ListedBooks = () => {
         </TabList>
 
         <TabPanel>
-          {readlistBooksState.length > 0 ? (
-            readlistBooksState.map((book) => (
-              <ListedBookCard key={book.bookId} book={book} />
+          {readlist.length > 0 ? (
+            readlist.map((book) => (
+              <ListedBookCard
+                key={book.bookId}
+                book={book}
+                list="readlist"
+                handleRemoveFromList={handleRemoveFromList}
+              />
             ))
           ) : (
             <div className="grid place-content-center text-[#131313] h-56 text-xl">
@@ -104,9 +94,14 @@ const ListedBooks = () => {
           )}
         </TabPanel>
         <TabPanel>
-          {wishlistBooksState.length > 0 ? (
-            wishlistBooksState.map((book) => (
-              <ListedBookCard key={book.bookId} book={book} />
+          {wishlist.length > 0 ? (
+            wishlist.map((book) => (
+              <ListedBookCard
+                key={book.bookId}
+                book={book}
+                list="wishlist"
+                handleRemoveFromList={handleRemoveFromList}
+              />
             ))
           ) : (
             <div className="grid place-content-center text-[#131313] h-56 text-xl">

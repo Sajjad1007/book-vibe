@@ -1,11 +1,12 @@
 import React from "react";
+import banner from "../assets/banner.png";
 
 const Banner = () => {
   return (
     <div className="hero px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-20 container mx-auto my-5">
       <div className="hero-content min-w-full rounded-2xl flex-col lg:flex-row-reverse bg-[#13131308] lg:px-20 2xl:px-28 py-12 gap-6 lg:gap-20 xl:gap-60 2xl:gap-80">
         <img
-          src="/banner.png"
+          src={banner}
           className="h-92 rounded-lg"
           alt="Banner"
           loading="lazy"

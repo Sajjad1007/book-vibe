@@ -1,8 +1,9 @@
 import React from "react";
+import { RxCross2 } from "react-icons/rx";
 import { IoPeopleOutline } from "react-icons/io5";
 import { MdOutlineContactPage } from "react-icons/md";
 
-const ListedBookCard = ({ book }) => {
+const ListedBookCard = ({ book, list, handleRemoveFromList }) => {
   const {
     image,
     author,
@@ -15,7 +16,7 @@ const ListedBookCard = ({ book }) => {
   } = book;
 
   return (
-    <div className="border-[#13131320] border rounded-xl p-4 flex flex-col sm:flex-row gap-8 my-6">
+    <div className="relative border-[#13131320] border rounded-xl p-4 flex flex-col sm:flex-row gap-8 my-6">
       <img
         src={image}
         alt={author}
@@ -60,6 +61,10 @@ const ListedBookCard = ({ book }) => {
           </div>
         </div>
       </div>
+      <RxCross2
+        onClick={() => handleRemoveFromList(book, list)}
+        className="absolute top-2 right-2 hover:cursor-pointer btn btn-sm btn-circle btn-ghost w-6 h-6 text-[#131313]"
+      />
     </div>
   );
 };

@@ -2,10 +2,10 @@ import React from "react";
 import { useLoaderData, useParams } from "react-router";
 import { toast, Bounce } from "react-toastify";
 import {
-  addReadlistBooks,
-  addWishlistBooks,
-  getReadlistBooks,
-  getWishlistBooks,
+  addToReadlist,
+  addToWishlist,
+  getReadlist,
+  getWishlist,
 } from "../utilities/localStorage";
 
 const BookDetails = () => {
@@ -25,10 +25,12 @@ const BookDetails = () => {
     yearOfPublishing,
   } = book;
 
-  const handleAddToList = (bookId, bookName, list) => {
+  const handleAddToList = (book, list) => {
     if (list === "readlist") {
-      if (getWishlistBooks().includes(bookId)) {
-        toast(`${bookName} is already added to wishlist.`, {
+      if (
+        getWishlist().find((listedBook) => listedBook.bookId === book.bookId)
+      ) {
+        toast(`${book.bookName} is already added to wishlist.`, {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -40,8 +42,8 @@ const BookDetails = () => {
           transition: Bounce,
         });
       } else {
-        addReadlistBooks(bookId);
-        toast(`${bookName} is marked as read.`, {
+        addToReadlist(book);
+        toast(`${book.bookName} is marked as read.`, {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -54,8 +56,10 @@ const BookDetails = () => {
         });
       }
     } else {
-      if (getReadlistBooks().includes(bookId)) {
-        toast(`${bookName} is already marked as read.`, {
+      if (
+        getReadlist().find((listedBook) => listedBook.bookId === book.bookId)
+      ) {
+        toast(`${book.bookName} is already marked as read.`, {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -67,8 +71,8 @@ const BookDetails = () => {
           transition: Bounce,
         });
       } else {
-        addWishlistBooks(bookId);
-        toast(`${bookName} is added to wishlist.`, {
+        addToWishlist(book);
+        toast(`${book.bookName} is added to wishlist.`, {
           position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
@@ -155,13 +159,13 @@ const BookDetails = () => {
         </table>
         <div className="flex justify-between sm:justify-start gap-3 mt-4">
           <button
-            onClick={() => handleAddToList(bookId, bookName, "readlist")}
+            onClick={() => handleAddToList(book, "readlist")}
             className="btn bg-white border-[#13131320] text-base font-work px-5 h-11 rounded-lg hover:bg-neutral-200"
           >
             Mark As Read
           </button>
           <button
-            onClick={() => handleAddToList(bookId, bookName, "wishlist")}
+            onClick={() => handleAddToList(book, "wishlist")}
             className="btn bg-[#50b1c9] border-[#50b1c9] text-base text-white font-work px-5 h-11 rounded-lg hover:opacity-85"
           >
             Add To Wishlist

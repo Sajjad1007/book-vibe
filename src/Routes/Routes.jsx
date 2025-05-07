@@ -15,17 +15,26 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch("booksData.json"),
         Component: Home,
+        loader: () => fetch("../booksData.json"),
+        hydrateFallbackElement: (
+          <div className="grid place-content-center w-full min-h-[calc(100vh-72px)]">
+            <span className="loading loading-dots loading-xl"></span>
+          </div>
+        ),
       },
       {
-        path: "/:bookId",
-        loader: () => fetch("booksData.json"),
+        path: "details/:bookId",
         Component: BookDetails,
+        loader: () => fetch("../booksData.json"),
+        hydrateFallbackElement: (
+          <div className="grid place-content-center w-full min-h-[calc(100vh-72px)]">
+            <span className="loading loading-dots loading-xl"></span>
+          </div>
+        ),
       },
       {
         path: "lists",
-        loader: () => fetch("booksData.json"),
         Component: ListedBooks,
       },
       {
