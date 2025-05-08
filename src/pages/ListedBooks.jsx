@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import { toast, Bounce } from "react-toastify";
 import { IoIosArrowDown } from "react-icons/io";
 import ListedBookCard from "../components/ListedBookCard";
 import {
@@ -28,9 +29,31 @@ const ListedBooks = () => {
     if (list === "readlist") {
       removeFromReadlist(book);
       setReadlist(getReadlist());
+      toast(`${book.bookName} is has been removed from read books.`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     } else {
       removeFromWishlist(book);
       setWishlist(getWishlist());
+      toast(`${book.bookName} is has been removed from wishlist books.`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   };
 
