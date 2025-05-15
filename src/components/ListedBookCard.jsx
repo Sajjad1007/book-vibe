@@ -1,4 +1,3 @@
-import React from "react";
 import { RxCross2 } from "react-icons/rx";
 import { IoPeopleOutline } from "react-icons/io5";
 import { MdOutlineContactPage } from "react-icons/md";

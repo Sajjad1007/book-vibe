@@ -1,4 +1,3 @@
-import React from "react";
 import { NavLink } from "react-router";
 
 const Navbar = () => {
@@ -116,7 +115,6 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-
       <div className="navbar-end gap-2">
         <a className="btn bg-green rounded-lg text-white font-work font-semibold hover:opacity-80 w-22">
           Sign In

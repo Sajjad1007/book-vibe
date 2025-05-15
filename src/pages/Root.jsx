@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router";
 import { ToastContainer } from "react-toastify";
 import Navbar from "../components/Navbar";
@@ -8,7 +7,7 @@ const Root = () => {
     <div>
       <Navbar />
       <Outlet />
-      <ToastContainer />
+      <ToastContainer position="top-right" autoClose={3000} />
     </div>
   );
 };

@@ -1,6 +1,5 @@
-import React from "react";
 import { useLoaderData, useParams } from "react-router";
-import { toast, Bounce } from "react-toastify";
+import { toast } from "react-toastify";
 import {
   addToReadlist,
   addToWishlist,
@@ -30,59 +29,19 @@ const BookDetails = () => {
       if (
         getWishlist().find((listedBook) => listedBook.bookId === book.bookId)
       ) {
-        toast(`${book.bookName} is already added to wishlist.`, {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.error(`${bookName} is already added to wishlist.`);
       } else {
         addToReadlist(book);
-        toast(`${book.bookName} is marked as read.`, {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.success(`${bookName} is marked as read.`);
       }
     } else {
       if (
         getReadlist().find((listedBook) => listedBook.bookId === book.bookId)
       ) {
-        toast(`${book.bookName} is already marked as read.`, {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.error(`${bookName} is already marked as read.`);
       } else {
         addToWishlist(book);
-        toast(`${book.bookName} is added to wishlist.`, {
-          position: "top-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-        });
+        toast.success(`${bookName} is added to wishlist.`);
       }
     }
   };

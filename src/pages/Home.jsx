@@ -1,4 +1,3 @@
-import React from "react";
 import { useLoaderData } from "react-router";
 import Banner from "../components/Banner";
 import BookCard from "../components/BookCard";

@@ -1,5 +1,3 @@
-import React from "react";
-
 const PagesToRead = () => {
   return (
     <div className="px-4 sm:px-6 lg:px-10 xl:px-14 2xl:px-20 container mx-auto my-5 text-center">
