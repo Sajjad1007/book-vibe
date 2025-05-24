@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import "tailwindcss";
+@plugin "daisyui";
+
+@theme {
+  --font-work: "Work Sans", sans-serif;
+  --font-display: "Playfair Display", serif;
+  --color-green: #23be0a;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+.Toastify__toast {
+  position: absolute;
+  width: 336px;
+  margin: 12px 12px 0px;
+  font-family: "Work Sans", sans-serif;
+  color: #131313;
+}
+
+@media screen and (min-width: 640px) {
+  .Toastify__toast {
+    width: 360px;
+    top: -8px;
+    right: -4px;
+  }
+}
